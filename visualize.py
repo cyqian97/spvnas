@@ -227,7 +227,8 @@ if __name__ == '__main__':
         label_file_name = point_cloud_name.replace('.bin', '.label')
         vis_file_name = point_cloud_name.replace('.bin', '.png')
         gt_file_name = point_cloud_name.replace('.bin', '_GT.png')
-        pc = np.fromfile(temp,dtype=np.float32).reshape(-1, 4)
+
+        pc = np.fromfile('{}/{}'.format(args.velodyne_dir,point_cloud_name),dtype=np.float32).reshape(-1, 4)
         if os.path.exists(label_file_name):
             label = np.fromfile('{}/{}'.format(args.velodyne_dir,label_file_name),
                                 dtype=np.int32)
