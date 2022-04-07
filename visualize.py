@@ -12,7 +12,7 @@ import numpy as np
 import torch
 from torchsparse import SparseTensor
 #from torchsparse.utils import sparse_quantize
-from torchsparse.utils.quantize import sparse_quantize
+from MinkowskiEngine.utils import sparse_quantize
 
 from model_zoo import minkunet, spvcnn, spvnas_specialized
 
@@ -41,8 +41,8 @@ def process_point_cloud(input_point_cloud, input_labels=None, voxel_size=0.05):
         pc_ = pc_
 
     inds, labels, inverse_map = sparse_quantize(pc_,
-                                                features=feat_,
-                                                labels=labels_,
+                                                feat_,
+                                                labels_,
                                                 return_index=True,
                                                 return_inverse=True)
     pc = np.zeros((inds.shape[0], 4))
