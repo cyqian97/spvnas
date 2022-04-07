@@ -11,7 +11,8 @@ import mayavi.mlab as mlab
 import numpy as np
 import torch
 from torchsparse import SparseTensor
-from torchsparse.utils import sparse_quantize
+#from torchsparse.utils import sparse_quantize
+from torchsparse.utils.quantize import sparse_quantize
 
 from model_zoo import minkunet, spvcnn, spvnas_specialized
 
@@ -195,7 +196,7 @@ def draw_lidar(pc,
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--velodyne-dir', type=str, default='sample_data')
+    parser.add_argument('--velodyne-dir', type=str, default='/dataset/semantic-kitti/00')
     parser.add_argument('--model',
                         type=str,
                         default='SemanticKITTI_val_SPVNAS@65GMACs')
@@ -226,11 +227,9 @@ if __name__ == '__main__':
         label_file_name = point_cloud_name.replace('.bin', '.label')
         vis_file_name = point_cloud_name.replace('.bin', '.png')
         gt_file_name = point_cloud_name.replace('.bin', '_GT.png')
-
-        pc = np.fromfile(f'{args.velodyne_dir}/{point_cloud_name}',
-                         dtype=np.float32).reshape(-1, 4)
+        pc = np.fromfile(temp,dtype=np.float32).reshape(-1, 4)
         if os.path.exists(label_file_name):
-            label = np.fromfile(f'{args.velodyne_dir}/{label_file_name}',
+            label = np.fromfile('{}/{}'.format(args.velodyne_dir,label_file_name),
                                 dtype=np.int32)
         else:
             label = None
@@ -240,7 +239,7 @@ if __name__ == '__main__':
         predictions = outputs.argmax(1).cpu().numpy()
         predictions = predictions[feed_dict['inverse_map']]
         fig = draw_lidar(feed_dict['pc'], predictions.astype(np.int32))
-        mlab.savefig(f'{output_dir}/{vis_file_name}')
+        mlab.savefig('{}/{}'.format(output_dir,vis_file_name))
         if label is not None:
             fig = draw_lidar(feed_dict['pc'], feed_dict['targets_mapped'])
-            mlab.savefig(f'{output_dir}/{gt_file_name}')
+            mlab.savefig('{}/{}'.format(output_dir,gt_file_name))

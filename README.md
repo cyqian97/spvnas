@@ -1,4 +1,4 @@
-# SPVNAS
+# SPVNAS (Chengyuan's Fork)
 
 ### [video](https://youtu.be/zzJR07LMXxs) | [paper](https://arxiv.org/abs/2007.16100) | [website](http://spvnas.mit.edu/) [![](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mit-han-lab/spvnas/blob/master/tutorial.ipynb)
 
@@ -39,11 +39,14 @@ The code is built with following libraries:
 For easy installation, use [conda](https://docs.conda.io/projects/conda/en/latest/):
 
 ```
-conda create -n torch python=3.7
+conda create -n torch python=3.7 -y
 conda activate torch
-conda install pytorch torchvision torchaudio cudatoolkit=10.2 -c pytorch
-conda install numba opencv
+python -m pip install vtk
+python -m pip install mayavi
+conda install pytorch torchvision torchaudio cudatoolkit=11.3 -c pytorch -y
+conda install numba opencv -y
 pip install torchpack
+sudo apt-get install libsparsehash-dev #This is the prerequisite for the TorchSparse package
 pip install --upgrade git+https://github.com/mit-han-lab/torchsparse.git
 ```
 
