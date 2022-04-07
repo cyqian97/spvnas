@@ -196,7 +196,7 @@ def draw_lidar(pc,
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--velodyne-dir', type=str, default='/dataset/semantic-kitti/00')
+    parser.add_argument('--velodyne-dir', type=str, default='/dataset/semantic-kitti/00/velodyne')
     parser.add_argument('--model',
                         type=str,
                         default='SemanticKITTI_val_SPVNAS@65GMACs')
