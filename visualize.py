@@ -44,7 +44,7 @@ def process_point_cloud(input_point_cloud, input_labels=None, voxel_size=0.05):
                                                 feat_,
                                                 labels_,
                                                 return_index=True,
-                                                return_invs=True)
+                                                return_inverse=True)
     pc = np.zeros((inds.shape[0], 4))
     pc[:, :3] = pc_[inds]
 
