@@ -214,7 +214,7 @@ if __name__ == '__main__':
     else:
         device = 'cpu'
         print('no gpu!')
-        return
+        raise 
 
     if 'MinkUNet' in args.model:
         model = minkunet(args.model, pretrained=True)
