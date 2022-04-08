@@ -44,7 +44,7 @@ conda activate torch
 python -m pip install vtk
 python -m pip install mayavi
 conda install pytorch torchvision torchaudio cudatoolkit=11.3 -c pytorch -y
-conda install numba opencv -y
+python -m pip install numba opencv-python
 pip install torchpack
 sudo apt-get install libsparsehash-dev #This is the prerequisite for the TorchSparse package
 pip install --upgrade git+https://github.com/mit-han-lab/torchsparse.git

@@ -245,6 +245,9 @@ if __name__ == '__main__':
         predictions = predictions[feed_dict['inverse_map']]
         fig = draw_lidar(feed_dict['pc'], predictions.astype(np.int32))
         mlab.savefig('{}/{}'.format(output_dir,vis_file_name))
+        mlab.clf(figure=None)
+        print(vis_file_name)
         if label is not None:
             fig = draw_lidar(feed_dict['pc'], feed_dict['targets_mapped'])
             mlab.savefig('{}/{}'.format(output_dir,gt_file_name))
+            mlab.clf(figure=None)
