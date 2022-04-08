@@ -1,4 +1,5 @@
     import cv2
+    import argparse
     import os
 
     def video_maker(image_folder,video_name = 'video.avi'):
@@ -13,3 +14,10 @@
 
         cv2.destroyAllWindows()
         video.release()
+
+    if __name__=='__main__':
+        parser = argparse.ArgumentParser()
+        parser.add_argument('--image-dir', type=str, default='/dataset/semantic-kitti/00/velodyne/outputs/')
+        args = parser.parse_args()
+        video_maker(args.image_dir)
+             
