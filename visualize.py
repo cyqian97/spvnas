@@ -6,6 +6,7 @@ Date: September 2017
 
 import argparse
 import os
+import video_maker
 import time
 import mayavi.mlab as mlab
 import numpy as np
@@ -227,7 +228,7 @@ if __name__ == '__main__':
     model = model.to(device)
 
     input_point_clouds = sorted(os.listdir(args.velodyne_dir))
-    for point_cloud_name in input_point_clouds:
+    for point_cloud_name in input_point_clouds[:800]:
         if not point_cloud_name.endswith('.bin'):
             continue
         label_file_name = point_cloud_name.replace('.bin', '.label')
@@ -255,3 +256,4 @@ if __name__ == '__main__':
             fig = draw_lidar(feed_dict['pc'], feed_dict['targets_mapped'])
             mlab.savefig('{}/{}'.format(output_dir,gt_file_name))
             mlab.close(fig)
+    video_maker.video_maker(output_dir)
