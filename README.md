@@ -50,6 +50,13 @@ sudo apt-get install libsparsehash-dev #This is the prerequisite for the TorchSp
 pip install --upgrade git+https://github.com/mit-han-lab/torchsparse.git
 ```
 
+For docker, torch and libsparsehash are preinstalled, so we only need,
+```
+pip install mayavi numba opencv-python torchpack              
+pip install --upgrade git+https://github.com/mit-han-lab/torchsparse.git    
+
+```
+
 ### Data Preparation
 
 #### SemanticKITTI
