@@ -244,7 +244,7 @@ if __name__ == '__main__':
         inputs = feed_dict['lidar'].to(device)
         t0 = time.time()
         outputs = model(inputs)
-        print("Inference time: {:%.4f} s".format(time.time()-t0))
+        print("Inference time: {:.4f} s".format(time.time()-t0))
         predictions = outputs.argmax(1).cpu().numpy()
         predictions = predictions[feed_dict['inverse_map']]
         fig = draw_lidar(feed_dict['pc'], predictions.astype(np.int32))
