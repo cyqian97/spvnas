@@ -166,7 +166,7 @@ cmap = cmap[:, [2, 1, 0, 3]]  # convert bgra to rgba
 def draw_lidar(pc,
                color=None,
                fig=None,
-               bgcolor=(1, 1, 1),
+               bgcolor=(0, 0, 0),
                pts_scale=0.06,
                pts_mode='2dcircle',
                pts_color=None):
@@ -192,7 +192,7 @@ def draw_lidar(pc,
 
     mlab.view(azimuth=270,
               elevation=70,
-              focalpoint= [0, -10, 2],
+              focalpoint= [0, -2, 1],
               distance=62,
               figure=fig)
 
