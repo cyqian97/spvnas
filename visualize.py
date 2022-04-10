@@ -190,7 +190,7 @@ def draw_lidar(pc,
     pts.module_manager.scalar_lut_manager.lut.table = cmap
     pts.module_manager.scalar_lut_manager.lut.number_of_colors = cmap.shape[0]
 
-    mlab.view(azimuth=90,
+    mlab.view(azimuth=270,
               elevation=70,
               focalpoint= [0, -10, 2],
               distance=62,
