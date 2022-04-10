@@ -192,7 +192,7 @@ def draw_lidar(pc,
 
     mlab.view(azimuth=270,
               elevation=70,
-              focalpoint= [0, 25, 1],
+              focalpoint= [0, 28, 1],
               distance=62,
               figure=fig)
 
