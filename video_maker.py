@@ -3,10 +3,10 @@ import argparse
 import os
 
 def video_maker(image_folder,video_name = 'video.mp4'):
-    print(image_folder)
+    # print(image_folder)
     images = [img for img in os.listdir(image_folder) if img.endswith(".png")]
     images.sort()
-    print(images)
+    # print(images)
     frame = cv2.imread(os.path.join(image_folder, images[0]))
     height, width, layers = frame.shape
 
